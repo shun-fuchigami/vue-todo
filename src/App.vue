@@ -1,27 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <TodoView></TodoView>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import 'normalize.css';
+import TodoView from '@/components/TodoView.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    TodoView
   }
 });
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body{
+  --main-color:#2E038C;
+  --button-color:#2E038C;
+  --button-color-2:#F20587;
 }
+
+ul{
+  padding: 0;
+}
+
+
 </style>
