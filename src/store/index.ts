@@ -52,20 +52,29 @@ export default createStore({
         return todo.id
       })
 
-      const nextId:number = ids.reduce((previous,next)=>{
-        return previous < next ? next : previous; 
-      })
+      if(ids.length > 0){ 
+        const nextId:number = ids.reduce((previous,next)=>{
+          return previous < next ? next : previous; 
+        })
+        
+        const newTodo:Todo= {
+          id:nextId,
+          name:todo.name,
+          deadLine:todo.deadLine,
+          isDone:false,
+        } 
+        state.todos.push(newTodo);
 
-      console.log(nextId);
+      } else {
+        const newTodo:Todo= {
+          id:0,
+          name:todo.name,
+          deadLine:todo.deadLine,
+          isDone:false,
+        } 
+        state.todos.push(newTodo);
+      }
 
-      const newTodo:Todo= {
-        id:nextId,
-        name:todo.name,
-        deadLine:todo.deadLine,
-        isDone:false,
-      } 
-
-      state.todos.push(newTodo);
     },
     updateIsDone(state,id:number):void{
       state.todos = state.todos.map(todo=>{
@@ -79,8 +88,4 @@ export default createStore({
       })
     }
   },
-  actions: {
-  },
-  modules: {
-  }
 })
